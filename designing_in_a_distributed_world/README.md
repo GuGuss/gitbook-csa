@@ -4,30 +4,30 @@
 
 ### Load balancer with multiple backends replicas
 
-Load balancers send health check queries and stop sending traffic to that backend it the health check fails.
-Round-robin is a simple scheme to determine where to send traffic. More complex solutions include the least loaded scheme (this implementation can be a disaster: see the CNN case in September 11th 2001 p.13).
+Load balancers send health check queries and stop sending traffic to that **backend** it the health check fails.
+**Round-robin** is a simple scheme to determine where to send traffic. More complex solutions include the **least loaded scheme** (*this implementation can be a disaster: see the CNN case in September 11th 2001 p.13*).
 
 SCHEMA P.12
 
 ### Server with multiple backends
 
-Used when the original query can easily be deconstructed into a number of independent queries that can be combined to form the final answer (ie: search engines).
+Used when the original query can easily be deconstructed into a number of independent queries that can be combined to form the final answer (*ie: search engines*).
 
 Figure B illustrates the same architecture with replicated, load-balanced, backends. The same principle applies but the system is able to scale and survive failures better.
 
 SHEMA P.14 A & B
 
 Advantages:
-Backends do their work in parallel
-Reply doesn’t have to wait for one backend process to complete before the next begins
-System loosely coupled
-One backed can fail and the page can still be constructed (by leaving the area blank of filling some default information)
+* Backends do their work in parallel
+* Reply doesn’t have to wait for one backend process to complete before the next begins
+* System loosely coupled
+* One backed can fail and the page can still be constructed (*by leaving the area blank of filling some default information*)
 
-Vocabulary: The term fan out refers to the fact that one query results in many new queries. The queries « fan out » to the individual backends, and the replies « fan in » as they’re set up to the frontend and combined into the final result.
+Vocabulary: The term **fan out** refers to the fact that one query results in many new queries. The queries "fan out" to the individual backends, and the replies **fan in** as they’re set up to the frontend and combined into the final result.
 
 ### Server tree
 
-Used to access a large dataset or corpus, which is larger than any one machine can hold. Each leaf stores one fraction or shard of the whole.
+Used to access a large dataset or **corpus**, which is larger than any one machine can hold. Each leaf stores one fraction or **shard** of the whole.
 
 Advantages:
 Paralle searching of a large corpus
@@ -59,6 +59,8 @@ Every request receives a response about wether it was successful or failed. In o
 The system continues to operate despite arbitrart message loss or failure of part of the system.
 
 SCHEMA P.23
+
+**Split brain** @TODO
 
 ## Loosely coupled systems
 
